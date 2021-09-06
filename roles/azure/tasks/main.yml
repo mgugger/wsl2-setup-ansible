@@ -1,0 +1,29 @@
+- name: Create temporary file for azcollection dependencies
+  ansible.builtin.tempfile:
+    state: file
+    suffix: temp
+  register: azcollection_deps
+
+- name: Download az requirements
+  get_url:
+    url: https://raw.githubusercontent.com/ansible-collections/azure/dev/requirements-azure.txt
+    dest: "{{ azcollection_deps.path }}" 
+
+- name: Install specified python requirements
+  pip:
+    requirements: "{{ azcollection_deps.path }}"
+
+- name: Install collection azure.azcollection
+  community.general.ansible_galaxy_install:
+    type: collection
+    name: azure.azcollection
+
+- name: Install collection community.azure
+  community.general.ansible_galaxy_install:
+    type: collection
+    name: community.azure
+
+- name: install or update azure cli
+  ansible.builtin.shell: "curl -L https://aka.ms/InstallAzureCli | bash"
+  args:
+    warn: no

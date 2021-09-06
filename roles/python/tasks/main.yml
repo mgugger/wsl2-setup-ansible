@@ -1,0 +1,16 @@
+- name: Install specified python requirements
+  pip:
+    virtualenv: "{{ lookup('env','HOME') }}/venv/ansible"
+    virtualenv_command: /usr/bin/python -m venv
+    requirements: "{{ playbook_dir }}/requirements/pip_packages.txt"
+
+- name: Install roles
+  community.general.ansible_galaxy_install:
+    type: role
+    dest: "{{ playbook_dir }}/roles.galaxy/"
+    requirements_file: "{{ playbook_dir }}/requirements/ansible-galaxy_roles.yml"
+
+- name: Install collections
+  community.general.ansible_galaxy_install:
+    type: collection
+    requirements_file: "{{ playbook_dir }}/requirements/ansible-galaxy_collections.yml"

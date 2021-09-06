@@ -1,0 +1,12 @@
+---
+- name: WSL Init
+  hosts: localhost
+  roles:
+  - python
+
+- name: WSL Setup
+  hosts: localhost
+  roles:
+  - andrewrothstein.terraform
+  - andrewrothstein.terragrunt
+  - azure
