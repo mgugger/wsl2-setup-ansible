@@ -1,25 +1,19 @@
 # wsl2-setup-ansible
-Contains the WSL Setup Scripts for Azure
+Contains the WSL Setup Scripts for Azure.
+
+This will install all the required dependencies for development with azure.
 
 ## Install
 ```
-sudo apt update
-sudo apt install -y ansible
-
-# Switch to python3 by default
+# Switch to python3 by default and install venv
 sudo apt install -y python-is-python3
+sudo apt install -y python3.8-venv
 
-# Install virtual env for python packages
-apt install -y python3.8-venv
+# Activate venv and install ansible
 python -m venv ~/venv/ansible
 source ~/venv/ansible/bin/activate
+pip install ansible
 
 # Run Playbook in virtualenv
 ansible-playbook setup-playbook.yml --ask-become
-
-# Install Ansible Azure Requirements (see github dir)
-curl -O https://raw.githubusercontent.com/ansible-collections/azure/dev/requirements-azure.txt && \
-python -m pip install --upgrade --no-cache-dir -r requirements-azure.txt && \
-rm requirements-azure.txt
-
 ```
