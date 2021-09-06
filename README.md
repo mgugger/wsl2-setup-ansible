@@ -1,5 +1,5 @@
 # wsl2-setup-ansible
-Contains the WSL Setup Scripts for Azure.
+Contains the WSL Setup Scripts for Azure on WSL with Ubuntu 20.04.
 
 This will install all the required dependencies for development with azure.
 
