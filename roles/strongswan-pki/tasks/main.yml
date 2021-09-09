@@ -1,0 +1,7 @@
+---
+- name: Install strongswan pki
+  apt:
+    pkg:
+    - strongswan
+    - strongswan-pki
+    - libstrongswan-extra-plugins

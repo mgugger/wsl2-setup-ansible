@@ -1,12 +1,14 @@
 ---
-- name: WSL Init
+- name: WSL Init for ansible
   hosts: localhost
   roles:
-  - bitwarden-cli
-  #- python
+  - python
+
 - name: WSL Setup
   hosts: localhost
   roles:
   - andrewrothstein.terraform
   - andrewrothstein.terragrunt
   - azure
+  - bitwarden-cli
+  - strongswan-pki
