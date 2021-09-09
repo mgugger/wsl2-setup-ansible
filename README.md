@@ -13,7 +13,10 @@ sudo apt install -y python3.8-venv
 python -m venv ~/venv/ansible
 source ~/venv/ansible/bin/activate
 pip install ansible
+deactivate
 
 # Run Playbook in virtualenv
+source ~/venv/ansible/bin/activate
 ansible-playbook setup-playbook.yml --ask-become
+deactivate
 ```

@@ -1,0 +1,13 @@
+---
+- name: Download bitwarden cli zip
+  become: yes
+  ansible.builtin.unarchive:
+    src: https://vault.bitwarden.com/download/?app=cli&platform=linux
+    dest: /usr/local/bin
+    remote_src: yes
+
+- name: Changing perm of "/foo/bar.sh", adding "+x"
+  become: yes
+  file: 
+    dest: /usr/local/bin/bw
+    mode: +x
