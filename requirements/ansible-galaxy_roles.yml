@@ -1,2 +1,3 @@
 - andrewrothstein.terraform
 - andrewrothstein.terragrunt
+- git+https://github.com/c0sco/ansible-modules-bitwarden
