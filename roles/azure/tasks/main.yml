@@ -24,6 +24,13 @@
     name: community.azure
 
 - name: install or update azure cli
+  when: ansible_distribution == "Ubuntu"
   ansible.builtin.shell: "curl -L https://aka.ms/InstallAzureCli | bash"
+  args:
+    warn: no
+
+- name: install or update azure cli
+  when: ansible_distribution == "Archlinux"
+  ansible.builtin.shell: "yay -S azure-cli --noconfirm"
   args:
     warn: no

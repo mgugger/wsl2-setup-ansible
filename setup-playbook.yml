@@ -7,8 +7,15 @@
 - name: WSL Setup
   hosts: localhost
   roles:
-  - andrewrothstein.terraform
-  - andrewrothstein.terragrunt
   - azure
   - bitwarden-cli
-  - strongswan-pki
+  tasks:
+  - name: install terraform
+    when: ansible_distribution == "Ubuntu"
+    include_role:
+      name: andrewrothstein.terraform
+
+  - name: install terragrunt
+    when: ansible_distribution == "Ubuntu"
+    include_role:
+      name: andrewrothstein.terragrunt
